@@ -1,0 +1,64 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.4.RELEASE'
+        hibernateVersion = '5.2.8.Final'
+        jacksonDateTimeVersion = '2.8.7'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    baseName = 'cama-api'
+    version = '0.0.1'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// Special syntax for overriding spring-boot-dependencies
+ext['hibernate.version'] = hibernateVersion
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-web')
+
+    // heroku
+    complie('com.h2database:h2')
+//    runtime('com.h2database:h2')
+
+    compileOnly('org.projectlombok:lombok')
+    compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonDateTimeVersion}")
+    compile("org.hibernate:hibernate-java8:${hibernateVersion}")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.security:spring-security-test')
+}
+
+task showMeCache {
+    doLast {
+        println('compileOnly dependencies:')
+        configurations.compileOnly.each { println it }
+        println('compile dependencies:')
+        configurations.compile.each { println it }
+        println('runtime dependencies:')
+        configurations.runtime.each { println it }
+        println('testCompile dependencies:')
+        configurations.testCompile.each { println it }
+    }
+}
