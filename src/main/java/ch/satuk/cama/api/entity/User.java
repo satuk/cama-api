@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.springframework.context.annotation.ComponentScan;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -87,7 +86,6 @@ public class User implements Serializable {
     @Column(name = "handy_number")
     @Size(min = 10, max = 114, message = "{errors.range}")
     private Long handyNumber;
-    
     
     @ManyToMany(mappedBy = "users")
     private List<Company> worksBy = new ArrayList<>();

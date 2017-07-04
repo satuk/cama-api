@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * Created by satuk on 03.07.17.
  */
+
 public interface CompanyRepository extends JpaRepository<Company, Long> {
     
     List<Company> findByNameIgnoreCaseContaining( String searchText );
