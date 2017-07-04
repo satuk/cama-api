@@ -1,7 +1,6 @@
 package ch.satuk.cama.api.service;
 
 import ch.satuk.cama.api.entity.User;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
