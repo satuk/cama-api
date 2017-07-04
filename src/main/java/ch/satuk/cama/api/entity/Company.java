@@ -35,17 +35,17 @@ public class Company implements Serializable {
     @Column(name = "date_created", updatable = false, nullable = false)
     private LocalDateTime dateCreated = LocalDateTime.now();
     
-    @JsonView(JsonViews.Detail.class)
+    @JsonView(JsonViews.Summary.class)
     @NotNull(message = "{errors.required}")
     @Size(max = 50, message = "{errors.range}")
     private String name;
     
-    @JsonView(JsonViews.Detail.class)
+    @JsonView(JsonViews.Summary.class)
     @NotNull(message = "{errors.required}")
     @Size(max = 200, message = "{errors.range}")
     private String address;
     
-    @JsonView(JsonViews.Detail.class)
+    @JsonView(JsonViews.Summary.class)
     @NotNull(message = "{errors.required}")
     @Size(min = 4, max = 4, message = "{errors.range}")
     @Column(name = "postal_code")
@@ -59,9 +59,11 @@ public class Company implements Serializable {
     @Size(max = 200, message = "{errors.range}")
     private String url;
     
+    @JsonView(JsonViews.Detail.class)
     @OneToMany(mappedBy = "company", cascade = CascadeType.REMOVE)
     private List<Event> events = new ArrayList<>();
     
+    @JsonView(JsonViews.Detail.class)
     @ManyToMany
     private List<User> users = new ArrayList<>();
     
