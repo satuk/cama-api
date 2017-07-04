@@ -4,7 +4,7 @@ tbd: description
 ___
 
 # Domain.model
-![domain.model](https://github.com/satuk/cama-api/blob/master/domain.model.png)
+![domain.model](https://github.com/satuk/cama-api/blob/new-domain-model/new-domain-model.png)
 
 # API
 
