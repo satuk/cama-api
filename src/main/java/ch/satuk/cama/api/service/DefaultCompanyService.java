@@ -19,27 +19,27 @@ import java.util.List;
 public class DefaultCompanyService implements CompanyService {
     
     @JsonView(JsonViews.Summary.class)
-    private final CompanyRepository companyRepository;
+    private final CompanyRepository repository;
     
     
     @Autowired
     public DefaultCompanyService( CompanyRepository repository ) {
-        this.companyRepository = repository;
+        this.repository = repository;
     }
     
     
     @Override
     public List<Company> findAll() {
-        return companyRepository.findAll();
+        return repository.findAll();
     }
     
     @Override
     public List<Company> findByIdIgnoreCaseConstaining( String searchText ) {
-        return companyRepository.findByNameIgnoreCaseContaining( searchText );
+        return repository.findByNameIgnoreCaseContaining( searchText );
     }
     
     @Override
     public Company findById( Long id ) {
-        return companyRepository.findById( id );
+        return repository.findById( id );
     }
 }
