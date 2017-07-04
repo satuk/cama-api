@@ -30,16 +30,16 @@ public class DefaultCompanyService implements CompanyService {
     
     @Override
     public List<Company> findAll() {
-        return repository.findAll();
+        return this.repository.findAll();
     }
     
     @Override
-    public List<Company> findByIdIgnoreCaseConstaining( String searchText ) {
-        return repository.findByNameIgnoreCaseContaining( searchText );
+    public List<Company> findByIdIgnoreCaseContaining( String searchText ) {
+        return this.repository.findByNameIgnoreCaseContaining( searchText );
     }
     
     @Override
     public Company findById( Long id ) {
-        return repository.findById( id );
+        return this.repository.findById( id );
     }
 }
