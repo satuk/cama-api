@@ -59,13 +59,7 @@ public class Company implements Serializable {
     @Size(max = 200, message = "{errors.range}")
     private String url;
     
-    @JsonView(JsonViews.Detail.class)
-    @OneToMany(mappedBy = "company", cascade = CascadeType.REMOVE)
-    private List<Event> events = new ArrayList<>();
-    
-    @JsonView(JsonViews.Detail.class)
-    @ManyToMany
-    private List<User> users = new ArrayList<>();
+    // @OneToMany ?? eventList ??
     
     
     public Company() {
@@ -85,13 +79,13 @@ public class Company implements Serializable {
         this( null, name, address, postalCode, description, url );
     }
     
-    public void addEvent( Event event ) {
-        this.events.add( event );
-    }
-    
-    public void addUser( User user ) {
-        this.users.add( user );
-    }
+//    public void addEvent( Event event ) {
+//        this.events.add( event );
+//    }
+//
+//    public void addUser( User user ) {
+//        this.users.add( user );
+//    }
     
     @PrePersist
     protected void prePersist() {

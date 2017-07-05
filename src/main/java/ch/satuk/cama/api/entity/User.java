@@ -84,11 +84,12 @@ public class User implements Serializable {
     @JsonView(JsonViews.Detail.class)
     @NotNull(message = "{errors.required}")
     @Column(name = "handy_number")
-    @Size(min = 10, max = 114, message = "{errors.range}")
+    @Size(min = 10, max = 14, message = "{errors.range}")
     private Long handyNumber;
     
-    @ManyToMany(mappedBy = "users")
-    private List<Company> worksBy = new ArrayList<>();
+    @JsonView(JsonViews.Detail.class)
+    @ManyToMany
+    private List<Company> companies = new ArrayList<>();
     
     public User() {
         /* default constructor: required by JPA */
@@ -120,7 +121,7 @@ public class User implements Serializable {
     }
     
     public void addCompany( Company company ) {
-        this.worksBy.add( company );
+        this.companies.add( company );
     }
     
     @PrePersist

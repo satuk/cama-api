@@ -73,6 +73,7 @@ public class Event implements Serializable {
     @Column(name = "expected_person")
     private Integer expectedPerson;
     
+    @JsonView(JsonViews.Detail.class)
     @ManyToOne
     private Company company;
     
