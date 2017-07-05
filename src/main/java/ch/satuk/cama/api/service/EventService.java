@@ -15,4 +15,6 @@ public interface EventService {
     List<Event> findByEventNameIgnoreCaseContaining( String searchEvent );
     
     Event findById( Long id );
+    
+    
 }
