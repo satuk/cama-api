@@ -45,4 +45,9 @@ public class DefaultUserService implements UserService {
         return this.userRepository.findById( id );
     }
     
+    @Override
+    public void updateUser( User user ) {
+        this.userRepository.saveAndFlush( user );
+    }
+    
 }
