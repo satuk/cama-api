@@ -1,5 +1,6 @@
 package ch.satuk.cama.api.service;
 
+import ch.satuk.cama.api.entity.Company;
 import ch.satuk.cama.api.entity.JsonViews;
 import ch.satuk.cama.api.entity.User;
 import ch.satuk.cama.api.repository.UserRepository;
@@ -43,4 +44,5 @@ public class DefaultUserService implements UserService {
     public User findById( Long id ) {
         return this.userRepository.findById( id );
     }
+    
 }

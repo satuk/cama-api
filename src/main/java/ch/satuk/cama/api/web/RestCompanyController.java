@@ -1,8 +1,10 @@
 package ch.satuk.cama.api.web;
 
 import ch.satuk.cama.api.entity.Company;
+import ch.satuk.cama.api.entity.Event;
 import ch.satuk.cama.api.entity.JsonViews;
 import ch.satuk.cama.api.service.CompanyService;
+import ch.satuk.cama.api.service.EventService;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,22 +22,36 @@ import java.util.List;
 @RequestMapping("/api/companies")
 public class RestCompanyController {
     
-    private final CompanyService service;
+    private final CompanyService companyService;
+    private final EventService eventService;
     
     @Autowired
-    public RestCompanyController( CompanyService service ) {
-        this.service = service;
+    public RestCompanyController( CompanyService companyService, EventService eventService ) {
+        this.companyService = companyService;
+        this.eventService = eventService;
     }
     
     @JsonView(JsonViews.Summary.class)
     @GetMapping
     public List<Company> retrieveAllCompanies() {
-        return service.findAll();
+        return companyService.findAll();
     }
     
     @JsonView(JsonViews.Detail.class)
     @GetMapping("/{id}")
     public Company retrieveCompany( @PathVariable Long id ) {
-        return this.service.findById( id );
+        return this.companyService.findById( id );
+    }
+    
+    @JsonView(JsonViews.Summary.class)
+    @GetMapping("/{id}/events")
+    public List<Event> retrieveAllEventsOfCompany( @PathVariable Long id ) {
+        return this.eventService.findEventsByCompany_Id( id );
+    }
+    
+    @JsonView(JsonViews.Summary.class)
+    @GetMapping("/{id}/events/{id}")
+    public Event retrieveEventOfCompany( @PathVariable Long id ) {
+        return this.eventService.findById( id );
     }
 }

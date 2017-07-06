@@ -1,5 +1,6 @@
 package ch.satuk.cama.api.repository;
 
+import ch.satuk.cama.api.entity.Company;
 import ch.satuk.cama.api.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

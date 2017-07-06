@@ -1,5 +1,6 @@
 package ch.satuk.cama.api.service;
 
+import ch.satuk.cama.api.entity.Company;
 import ch.satuk.cama.api.entity.User;
 import ch.satuk.cama.api.entity.Work;
 
