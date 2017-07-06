@@ -40,6 +40,7 @@ public class DefaultApplicationService implements ApplicationService {
     }
     
     @Override
+    @Transactional(readOnly = false)
     public void deleteById( Long id ) {
         this.applicationRepository.delete( id );
     }
