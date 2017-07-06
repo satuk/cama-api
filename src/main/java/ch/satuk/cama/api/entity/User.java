@@ -48,7 +48,6 @@ public class User implements Serializable {
     @Column(name = "last_name")
     private String lastName;
     
-    @JsonView(JsonViews.Detail.class)
     // BCrypt encoded passwords can need 50-76 characters.
     @NotNull(message = "{errors.required}")
     @Size(max = 76, message = "{errors.range}")
