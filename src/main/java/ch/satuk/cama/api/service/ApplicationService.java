@@ -10,6 +10,17 @@ import java.util.List;
 
 public interface ApplicationService {
     
+    Application findById( Long id );
+    
+    void deleteById( Long id );
+    
+    void save( Application application );
+    
+    List<Application> findAll();
+    
+    Application findApplicationByEvent_IdAndUser_Id( Long event_id, Long user_id );
+    
     List<Application> findApplicationsByUser_Id( Long id );
     
+    List<Application> findApplicationsByEvent_Id( Long id );
 }
