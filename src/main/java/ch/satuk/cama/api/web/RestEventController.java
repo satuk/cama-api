@@ -1,14 +1,14 @@
 package ch.satuk.cama.api.web;
 
 import ch.satuk.cama.api.entity.*;
-import ch.satuk.cama.api.service.*;
+import ch.satuk.cama.api.service.ApplicationService;
+import ch.satuk.cama.api.service.EventService;
+import ch.satuk.cama.api.service.UserService;
+import ch.satuk.cama.api.service.WorkService;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -63,25 +63,37 @@ public class RestEventController {
     @JsonView(JsonViews.Summary.class)
     @PostMapping("/{id}/applications")
     public void approveUser( @RequestBody Map<String, String> json, @PathVariable Long id ) {
-        // approved user deleted from applied added working
         // check if its in the applications list
         
         // find event and user
         Event event = this.eventService.findById( id );
         User user = this.userService.findById( Long.parseLong( json.get( "user_id" ) ) );
         
-        // than save it and allow just once
-        this.workService.save( new Work( LocalDateTime.now(), event, user ) );
-        
-        // add the company to user's list
         user.addCompany( event.getCompany() );
-//        this.userService.findById( user.getId() ).addCompany( event.getCompany() );
+        this.userService.updateUser( user );
+        
+        // than save it and allow just once
+        if ( this.workService.findWorksByUser_Id( user.getId() )
+                .stream()
+                .filter( work -> work.getEvent().equals( event ) )
+                .collect( Collectors.toList() )
+                .size() == 0 ) {
+            
+            this.workService.save( new Work( event, user ) );
+            
+        }
         
         // than delete it from applications table
-        Application application = this.applicationService.findApplicationByEvent_IdAndUser_Id( event.getId(), user
-                .getId() );
-        
-        this.applicationService.deleteById( application.getId() );
+        Application application = this.applicationService.findApplicationByEvent_IdAndUser_Id( event.getId(), user.getId() );
+        if ( this.applicationService
+                .findAll()
+                .stream()
+                .filter( a -> a.getId() == application.getId() )
+                .collect( Collectors.toList() )
+                .size() == 0 ) {
+            
+            this.applicationService.deleteById( application.getId() );
+            
+        }
     }
-    
 }
