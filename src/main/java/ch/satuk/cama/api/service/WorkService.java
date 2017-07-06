@@ -12,4 +12,5 @@ public interface WorkService {
     
     List<Work> findWorksByUser_Id( Long id );
     
+    Work save(Work work);
 }
