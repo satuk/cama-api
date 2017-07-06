@@ -59,9 +59,6 @@ public class Company implements Serializable {
     @Size(max = 200, message = "{errors.range}")
     private String url;
     
-    // @OneToMany ?? eventList ??
-    
-    
     public Company() {
         /* default constructor: required by JPA */
     }
@@ -78,14 +75,6 @@ public class Company implements Serializable {
     public Company( String name, String address, Integer postalCode, String description, String url ) {
         this( null, name, address, postalCode, description, url );
     }
-    
-//    public void addEvent( Event event ) {
-//        this.events.add( event );
-//    }
-//
-//    public void addUser( User user ) {
-//        this.users.add( user );
-//    }
     
     @PrePersist
     protected void prePersist() {

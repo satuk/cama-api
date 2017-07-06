@@ -34,13 +34,11 @@ public class Application implements Serializable {
     
     @NotNull(message = "{errors.required}")
     @JsonView(JsonViews.Detail.class)
-    // what is by removing?? its ok with CascadeType.all
     @JoinColumn(name = "event_id")
     @OneToOne(cascade = CascadeType.ALL)
     private Event event;
     
     @NotNull(message = "{errors.required}")
-    // what is by removing?? its ok with CascadeType.all
     @JoinColumn(name = "user_id")
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
