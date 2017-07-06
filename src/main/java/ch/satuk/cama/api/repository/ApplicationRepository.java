@@ -19,4 +19,5 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
     List<Application> findApplicationsByUser_Id( Long id );
     
     List<Application> findApplicationsByEvent_Id( Long id );
+    
 }
