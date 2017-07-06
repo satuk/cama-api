@@ -32,7 +32,12 @@ public class DefaultWorkService implements WorkService {
     
     @Override
     public Work save( Work work ) {
-        return this.repository.save( work );
+        return this.repository.saveAndFlush( work );
+    }
+    
+    @Override
+    public Work findById( Long id ) {
+        return this.repository.findById( id );
     }
     
 }
