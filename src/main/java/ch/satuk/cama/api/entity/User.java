@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by satuk on 03.07.17.
@@ -120,7 +121,9 @@ public class User implements Serializable {
     }
     
     public void addCompany( Company company ) {
-        this.companies.add( company );
+        if ( companies.stream().filter( c -> c.getId() == company.getId() ).collect( Collectors.toList() ).size() == 0 ) {
+            this.companies.add( company );
+        }
     }
     
     @PrePersist
