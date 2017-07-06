@@ -19,25 +19,36 @@ import java.util.List;
 public class DefaultEventService implements EventService {
     
     @JsonView(JsonViews.Summary.class)
-    private final EventRepository repository;
+    private final EventRepository eventRepository;
     
     @Autowired
-    public DefaultEventService( EventRepository repository ) {
-        this.repository = repository;
+    public DefaultEventService( EventRepository eventRepository ) {
+        this.eventRepository = eventRepository;
     }
     
     @Override
     public List<Event> findAll() {
-        return this.repository.findAll();
+        return this.eventRepository.findAll();
     }
     
     @Override
     public List<Event> findByEventNameIgnoreCaseContaining( String searchEvent ) {
-        return this.repository.findByEventNameIgnoreCaseContaining( searchEvent );
+        return this.eventRepository.findByEventNameIgnoreCaseContaining( searchEvent );
+    }
+    
+    @Transactional(readOnly = false)
+    @Override
+    public Event save( Event event ) {
+        return eventRepository.save( event );
     }
     
     @Override
     public Event findById( Long id ) {
-        return this.repository.findById( id );
+        return this.eventRepository.findById( id );
+    }
+    
+    @Override
+    public List<Event> findEventsByCompany_Id( Long id ) {
+        return this.eventRepository.findEventsByCompany_Id( id );
     }
 }
