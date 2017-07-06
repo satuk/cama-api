@@ -10,11 +10,13 @@ import java.util.List;
 
 public interface EventService {
     
+    Event save( Event event );
+    
+    Event findById( Long id );
+    
     List<Event> findAll();
     
     List<Event> findByEventNameIgnoreCaseContaining( String searchEvent );
     
-    Event findById( Long id );
-    
-    
+    List<Event> findEventsByCompany_Id( Long id );
 }
