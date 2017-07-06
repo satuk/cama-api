@@ -42,7 +42,7 @@ public class CompanyServiceTest {
         Company company = service.findById( 1L );
         String companyNameToUpperCase = company.getName().toUpperCase();
         
-        assertThat( service.findByIdIgnoreCaseConstaining( company.getName() ) ).isEqualTo( Arrays.asList( company ) );
-        assertThat( service.findByIdIgnoreCaseConstaining( company.getName().substring( 0, company.getName().length() / 2 ) ) ).isEqualTo( Arrays.asList( company ) );
+        assertThat( service.findByIdIgnoreCaseContaining( company.getName() ) ).isEqualTo( Arrays.asList( company ) );
+        assertThat( service.findByIdIgnoreCaseContaining( company.getName().substring( 0, company.getName().length() / 2 ) ) ).isEqualTo( Arrays.asList( company ) );
     }
 }
