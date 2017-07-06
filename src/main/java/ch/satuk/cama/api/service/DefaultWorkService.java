@@ -30,4 +30,9 @@ public class DefaultWorkService implements WorkService {
         return this.repository.findWorksByUser_Id( id );
     }
     
+    @Override
+    public Work save( Work work ) {
+        return this.repository.save( work );
+    }
+    
 }
