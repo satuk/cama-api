@@ -59,6 +59,10 @@ public class Work implements Serializable {
         this( null, dateCreated, event, user );
     }
     
+    public Work( Event event, User user ) {
+        this( null, event, user );
+    }
+    
     @PrePersist
     protected void prePersist() {
         this.dateCreated = LocalDateTime.now();
