@@ -13,4 +13,6 @@ public interface WorkRepository extends JpaRepository<Work, Long> {
     
     List<Work> findWorksByUser_Id( Long id );
     
+    Work findById( Long id );
+    
 }
