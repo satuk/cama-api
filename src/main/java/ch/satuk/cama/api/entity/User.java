@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by satuk on 03.07.17.
@@ -48,7 +49,6 @@ public class User implements Serializable {
     @Column(name = "last_name")
     private String lastName;
     
-    @JsonView(JsonViews.Detail.class)
     // BCrypt encoded passwords can need 50-76 characters.
     @NotNull(message = "{errors.required}")
     @Size(max = 76, message = "{errors.range}")
@@ -84,11 +84,12 @@ public class User implements Serializable {
     @JsonView(JsonViews.Detail.class)
     @NotNull(message = "{errors.required}")
     @Column(name = "handy_number")
-    @Size(min = 10, max = 114, message = "{errors.range}")
+    @Size(min = 10, max = 14, message = "{errors.range}")
     private Long handyNumber;
     
-    @ManyToMany(mappedBy = "users")
-    private List<Company> worksBy = new ArrayList<>();
+    @JsonView(JsonViews.Detail.class)
+    @ManyToMany
+    private List<Company> companies = new ArrayList<>();
     
     public User() {
         /* default constructor: required by JPA */
@@ -120,7 +121,9 @@ public class User implements Serializable {
     }
     
     public void addCompany( Company company ) {
-        this.worksBy.add( company );
+        if ( companies.stream().filter( c -> c.getId() == company.getId() ).collect( Collectors.toList() ).size() == 0 ) {
+            this.companies.add( company );
+        }
     }
     
     @PrePersist

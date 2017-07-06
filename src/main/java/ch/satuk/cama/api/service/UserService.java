@@ -1,6 +1,8 @@
 package ch.satuk.cama.api.service;
 
+import ch.satuk.cama.api.entity.Company;
 import ch.satuk.cama.api.entity.User;
+import ch.satuk.cama.api.entity.Work;
 
 import java.util.List;
 
@@ -15,4 +17,6 @@ public interface UserService {
     List<User> findByFirstNameIgnoreCaseContaining( String searchUser );
     
     User findById( Long id );
+    
+    void updateUser( User user );
 }
