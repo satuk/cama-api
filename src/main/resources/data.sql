@@ -11,7 +11,7 @@ INSERT INTO users (id, first_name, last_name, password, email, address, age, pos
 INSERT INTO users (id, first_name, last_name, password, email, address, age, postal_code, handy_number, city, date_created) VALUES (6, 'Hans3', 'Muster3', 'password', 'hans3@muster.ch', 'Bahnhofstrasse 100', 55, 8000, 0790000000, 'Zürich', {ts '2017-01-01 00:00:00.00'});
 
 
-INSERT INTO events (id, event_name, logo, event_date, event_start, event_end, different_location, expected_person, company_id, date_created, visibility) VALUES (1, 'Turkish Night', 'http://placehold.it/300x250', {ts '2017-01-01'}, {ts '2017-01-01 00:00:00.00'}, {ts '2017-01-01 00:00:00.00'}, 0, 400, 1, {ts '2017-01-01'}, true );
+INSERT INTO events (id, event_name, logo, event_date, event_start, event_end, different_location, expected_person, company_id, date_created, visibility) VALUES (1, 'Turkish Night', 'http://placehold.it/300x250', {ts '2017-10-10'}, {ts '2017-01-01 00:00:00.00'}, {ts '2017-01-01 00:00:00.00'}, 0, 400, 1, {ts '2017-01-01'}, true );
 INSERT INTO events (id, event_name, logo, event_date, event_start, event_end, different_location, expected_person, company_id, date_created, visibility) VALUES (2, 'Istanbul Night', 'http://placehold.it/300x250', {ts '2017-01-01'}, {ts '2017-01-01 00:00:00.00'}, {ts '2017-01-01 00:00:00.00'}, 0, 400, 1, {ts '2017-01-01'}, true );
 INSERT INTO events (id, event_name, logo, event_date, event_start, event_end, different_location, expected_person, company_id, date_created, visibility) VALUES (3, 'Italian Night', 'http://placehold.it/300x250', {ts '2017-01-01'}, {ts '2017-01-01 00:00:00.00'}, {ts '2017-01-01 00:00:00.00'}, 0, 200, 2, {ts '2017-01-01'}, true );
 INSERT INTO events (id, event_name, logo, event_date, event_start, event_end, different_location, expected_person, company_id, date_created, visibility) VALUES (4, 'Birthday Party', 'http://placehold.it/300x250', {ts '2017-01-01'}, {ts '2017-01-01 00:00:00.00'}, {ts '2017-01-01 00:00:00.00'}, 0, 33, 3, {ts '2017-01-01'}, true );
@@ -39,7 +39,7 @@ INSERT INTO works(id, date_created, event_id, user_id) VALUES (6, {ts '2017-01-0
 INSERT INTO applications(id, date_created, event_id, user_id) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 1, 1);
 INSERT INTO applications(id, date_created, event_id, user_id) VALUES (2, {ts '2017-01-01 00:00:00.00'}, 2, 1);
 INSERT INTO applications(id, date_created, event_id, user_id) VALUES (3, {ts '2017-01-01 00:00:00.00'}, 3, 1);
-INSERT INTO applications(id, date_created, event_id, user_id) VALUES (4, {ts '2017-01-01 00:00:00.00'}, 4, 1);
+INSERT INTO applications(id, date_created, event_id, user_id) VALUES (4, {ts '2017-01-01 00:00:00.00'}, 3, 4);
 
 INSERT INTO applications(id, date_created, event_id, user_id) VALUES (5, {ts '2017-01-01 00:00:00.00'}, 1, 2);
 INSERT INTO applications(id, date_created, event_id, user_id) VALUES (6, {ts '2017-01-01 00:00:00.00'}, 1, 3);
