@@ -51,7 +51,12 @@ public class Company implements Serializable {
     @Column(name = "postal_code")
     private Integer postalCode;
     
-    @JsonView(JsonViews.Detail.class)
+    @JsonView(JsonViews.Summary.class)
+    @NotNull(message = "{errors.required}")
+    @Size(min = 4, max = 30, message = "{errors.range}")
+    private String city;
+    
+    @JsonView(JsonViews.Summary.class)
     @Size(max = 200, message = "{errors.range}")
     private String description;
     
@@ -59,21 +64,27 @@ public class Company implements Serializable {
     @Size(max = 200, message = "{errors.range}")
     private String url;
     
+    @JsonView(JsonViews.Summary.class)
+    @Size(max = 200, message = "{errors.range}")
+    private String logo;
+    
     public Company() {
         /* default constructor: required by JPA */
     }
     
-    public Company( Long id, String name, String address, Integer postalCode, String description, String url ) {
+    public Company( Long id, String name, String address, String city, Integer postalCode, String description, String url, String logo) {
         this.id = id;
         this.name = name;
         this.address = address;
+        this.city = city;
         this.postalCode = postalCode;
         this.description = description;
         this.url = url;
+        this.logo = logo;
     }
     
-    public Company( String name, String address, Integer postalCode, String description, String url ) {
-        this( null, name, address, postalCode, description, url );
+    public Company( String name, String address, String city, Integer postalCode, String description, String url , String logo) {
+        this( null, name, address, city, postalCode, description, url, logo );
     }
     
     @PrePersist
