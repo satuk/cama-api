@@ -37,8 +37,7 @@ public class Event implements Serializable {
     @NotNull(message = "{errors.required}")
     @Size(max = 50, message = "{errors.range}")
     @JsonView(JsonViews.Summary.class)
-    @Column(name = "event_name")
-    private String eventName;
+    private String name;
     
     @NotNull(message = "{errors.required}")
     @Size(max = 50, message = "{errors.range}")
@@ -47,18 +46,15 @@ public class Event implements Serializable {
     
     @JsonView(JsonViews.Summary.class)
     @NotNull(message = "{errors.required}")
-    @Column(name = "event_date")
-    private LocalDate eventDate;
+    private LocalDate date;
     
     @JsonView(JsonViews.Summary.class)
     @NotNull(message = "{errors.required}")
-    @Column(name = "event_start")
-    private LocalDateTime eventStart;
+    private LocalDateTime start;
     
     @JsonView(JsonViews.Summary.class)
     @NotNull(message = "{errors.required}")
-    @Column(name = "event_end")
-    private LocalDateTime eventEnd;
+    private LocalDateTime end;
     
     @JsonView(JsonViews.Detail.class)
     @NotNull(message = "{errors.required}")
@@ -69,9 +65,14 @@ public class Event implements Serializable {
     @NotNull(message = "{errors.required}")
     private Boolean visibility;
     
-    @JsonView(JsonViews.Detail.class)
+    @JsonView(JsonViews.Summary.class)
     @Column(name = "expected_person")
     private Integer expectedPerson;
+    
+    @NotNull(message = "{errors.required}")
+    @Size(max = 200, message = "{errors.range}")
+    @JsonView(JsonViews.Summary.class)
+    private String description;
     
     @JsonView(JsonViews.Summary.class)
     @ManyToOne
@@ -81,21 +82,23 @@ public class Event implements Serializable {
         /* default constructor: required by JPA */
     }
     
-    public Event( Long id, String eventName, String logo, LocalDate eventDate, LocalDateTime eventStart, LocalDateTime eventEnd, Boolean differentLocation, Boolean visibility, Integer expectedPerson, Company company ) {
+    public Event( Long id, String name, String logo, LocalDate date, LocalDateTime start, LocalDateTime end, Boolean differentLocation, Boolean visibility, Integer expectedPerson, String description, Company company ) {
         this.id = id;
-        this.eventName = eventName;
+        this.name = name;
         this.logo = logo;
-        this.eventDate = eventDate;
-        this.eventStart = eventStart;
-        this.eventEnd = eventEnd;
+        this.date = date;
+        this.start = start;
+        this.end = end;
         this.differentLocation = differentLocation;
         this.visibility = visibility;
         this.expectedPerson = expectedPerson;
+        this.description = description;
         this.company = company;
     }
     
-    public Event( String eventName, String logo, LocalDate eventDate, LocalDateTime eventStart, LocalDateTime eventEnd, Boolean differentLocation, Boolean visibility, Integer expectedPerson, Company company ) {
-        this( null, eventName, logo, eventDate, eventStart, eventEnd, differentLocation, visibility, expectedPerson, company );
+    public Event( String name, String logo, LocalDate date, LocalDateTime start, LocalDateTime end, Boolean differentLocation, Boolean visibility, Integer expectedPerson, String description, Company company ) {
+        this( null, name, logo, date, start, end, differentLocation, visibility, expectedPerson, description,
+                company );
     }
     
     @PrePersist
