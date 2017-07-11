@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface EventRepository extends JpaRepository<Event, Long> {
     
-    List<Event> findByEventNameIgnoreCaseContaining( String searchEvent );
+    List<Event> findByNameIgnoreCaseContaining( String searchEvent );
     
     Event findById( Long id );
     

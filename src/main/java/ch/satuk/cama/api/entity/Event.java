@@ -40,7 +40,7 @@ public class Event implements Serializable {
     private String name;
     
     @NotNull(message = "{errors.required}")
-    @Size(max = 50, message = "{errors.range}")
+    @Size(max = 250, message = "{errors.range}")
     @JsonView(JsonViews.Summary.class)
     private String logo;
     

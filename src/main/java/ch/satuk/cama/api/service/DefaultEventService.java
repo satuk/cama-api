@@ -33,7 +33,7 @@ public class DefaultEventService implements EventService {
     
     @Override
     public List<Event> findByEventNameIgnoreCaseContaining( String searchEvent ) {
-        return this.eventRepository.findByEventNameIgnoreCaseContaining( searchEvent );
+        return this.eventRepository.findByNameIgnoreCaseContaining( searchEvent );
     }
     
     @Transactional(readOnly = false)
