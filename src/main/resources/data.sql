@@ -17,14 +17,15 @@ INSERT INTO users (id, first_name, last_name, password, email, address, age, pos
 date_created) VALUES (6, 'Yusef', 'Habibi', 'password', 'yusef@muster.ch', 'Bahnhofstrasse 100', 55, 8000, 0790000000, 'Zürich', {ts '2017-01-01 00:00:00.00'});
 
 
-INSERT INTO events (id, event_name, logo, event_date, event_start, event_end, different_location, expected_person, company_id, date_created, visibility) VALUES (1, 'Turkish Night', 'https://unsplash.it/200/300/?random', {ts '2017-10-10'}, {ts '2017-01-01 18:00:00.00'}, {ts '2017-01-01 23:59:00.00'}, 0, 400, 1, {ts
-'2017-01-01'}, true );
-INSERT INTO events (id, event_name, logo, event_date, event_start, event_end, different_location, expected_person, company_id, date_created, visibility) VALUES (2, 'Istanbul Night', 'https://unsplash.it/200/300/?random', {ts '2017-01-01'}, {ts '2017-01-01 12:00:00.00'}, {ts '2017-01-01 23:00:00.00'}, 0, 400, 1, {ts
-'2017-01-01'}, true );
-INSERT INTO events (id, event_name, logo, event_date, event_start, event_end, different_location, expected_person, company_id, date_created, visibility) VALUES (3, 'Italian Night', 'https://unsplash.it/200/300/?random', {ts '2017-01-01'}, {ts '2017-01-01 14:00:00.00'}, {ts '2017-01-01 22:30:00.00'}, 0, 200, 2, {ts
-'2017-01-01'}, true );
-INSERT INTO events (id, event_name, logo, event_date, event_start, event_end, different_location, expected_person, company_id, date_created, visibility) VALUES (4, 'Birthday Party', 'https://unsplash.it/200/300/?random', {ts '2017-01-01'}, {ts '2017-01-01 14:00:00.00'}, {ts '2017-01-01 22:00:00.00'}, 0, 33, 3, {ts
-'2017-01-01'}, true );
+INSERT INTO events (id, name, logo, date, start, end, different_location, expected_person, company_id, description,
+date_created, visibility) VALUES (1, 'PLANET 105 WE LOVE IBIZA BOAT', 'http://zuerich.usgang.ch/uploadfile/flyer/751920.jpg', {ts '2017-10-10'}, {ts '2017-01-01 18:00:00.00'}, {ts '2017-01-01 23:59:00.00'}, 0, 400, 1, 'DJs Tanja La Croix, Sam, Alex Price, Dino Supreme Show',
+{ts '2017-01-01'}, true );
+INSERT INTO events (id, name, logo, date, start, end, different_location, expected_person, company_id, description, date_created, visibility) VALUES (2, 'BAD ATTITUDE
+', 'http://zuerich.usgang.ch/uploadfile/flyer/752716.jpg', {ts '2017-01-01'}, {ts '2017-01-01 12:00:00.00'}, {ts
+'2017-01-01 23:00:00.00'}, 0, 400, 1,'Reggaeton und RnB',{ts '2017-01-01'}, true );
+INSERT INTO events (id, name, logo, date, start, end, different_location, expected_person, company_id,  description,date_created, visibility) VALUES (3, 'HIT MACHINE
+', 'http://zuerich.usgang.ch/uploadfile/flyer/750729.jpg', {ts '2017-01-01'}, {ts '2017-01-01 14:00:00.00'}, {ts '2017-01-01 22:30:00.00'}, 0, 200, 2, 'Party',{ts '2017-01-01'}, true );
+INSERT INTO events (id, name, logo, date, start, end, different_location, expected_person, company_id,  description,date_created, visibility) VALUES (4, 'HARDTURM FESTIVAL - OUT OF CONTROL', 'http://zuerich.usgang.ch/uploadfile/flyer/749641.jpg', {ts '2017-01-01'}, {ts '2017-01-01 14:00:00.00'}, {ts '2017-01-01 22:00:00.00'}, 0, 33, 3,'Hip Hop, House und Mash Up', {ts '2017-01-01'}, true );
 
 
 INSERT INTO users_companies(user_id, companies_id) VALUES (1, 1);
