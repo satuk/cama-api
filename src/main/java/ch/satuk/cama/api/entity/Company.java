@@ -68,11 +68,17 @@ public class Company implements Serializable {
     @Size(max = 200, message = "{errors.range}")
     private String logo;
     
+    @JsonView(JsonViews.Summary.class)
+    @Size(max = 200, message = "{errors.range}")
+    @Column(name = "public_events")
+    private Boolean publicEvents;
+    
     public Company() {
         /* default constructor: required by JPA */
     }
     
-    public Company( Long id, String name, String address, String city, Integer postalCode, String description, String url, String logo) {
+    public Company( Long id, String name, String address, String city, Integer postalCode, String description, String
+            url, String logo, Boolean publicEvents ) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -81,10 +87,12 @@ public class Company implements Serializable {
         this.description = description;
         this.url = url;
         this.logo = logo;
+        this.publicEvents = publicEvents;
     }
     
-    public Company( String name, String address, String city, Integer postalCode, String description, String url , String logo) {
-        this( null, name, address, city, postalCode, description, url, logo );
+    public Company( String name, String address, String city, Integer postalCode, String description, String url,
+                    String logo, Boolean publicEvents ) {
+        this( null, name, address, city, postalCode, description, url, logo, publicEvents );
     }
     
     @PrePersist
