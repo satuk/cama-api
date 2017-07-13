@@ -32,8 +32,8 @@ public class DefaultEventService implements EventService {
     }
     
     @Override
-    public List<Event> findByEventNameIgnoreCaseContaining( String searchEvent ) {
-        return this.eventRepository.findByNameIgnoreCaseContaining( searchEvent );
+    public List<Event> findByEventNameIgnoreCaseContaining( String searchEventName ) {
+        return this.eventRepository.findByNameIgnoreCaseContaining( searchEventName );
     }
     
     @Transactional(readOnly = false)

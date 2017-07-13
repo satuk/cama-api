@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
 /**
  * Created by satuk on 04.07.17.
  */
@@ -93,7 +95,13 @@ public class RestEventController {
                 .size() == 0 ) {
             
             this.applicationService.deleteById( application.getId() );
-            
         }
+    }
+    
+    @JsonView(JsonViews.Summary.class)
+    @RequestMapping(value = "/search", params = "query", method = GET)
+    @ResponseBody
+    public List<Event> retrieveSearchedEvents( @RequestParam("query") String query ) {
+        return eventService.findByEventNameIgnoreCaseContaining( query );
     }
 }
