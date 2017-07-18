@@ -1,5 +1,6 @@
 # Cama API
 [![CircleCI](https://circleci.com/gh/satuk/cama-api.svg?style=shield)](https://circleci.com/gh/satuk/cama-api/tree/master)
+[![Code Climate](https://img.shields.io/codeclimate/coverage/github/triAGENS/ashikawa-core.svg)](https://codeclimate.com/github/satuk/cama-api)
 
 ## Documentation
 ___
