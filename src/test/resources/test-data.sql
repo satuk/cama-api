@@ -15,5 +15,3 @@ INSERT INTO events (id, name, logo, date, start, end, different_location, expect
 INSERT INTO users_companies(user_id, companies_id) VALUES (1, 1);
 
 INSERT INTO applications(id, date_created, event_id, user_id) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 1, 1);
-
--- INSERT INTO works(id, date_created, event_id, user_id) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 1, 1);

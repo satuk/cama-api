@@ -28,7 +28,8 @@ public class CompanyServiceTest {
     
     @Test
     public void findAll() {
-        assertThat( service.findAll().size() ).isEqualTo( 1 );
+        // there are two companies in the test-data.sql
+        assertThat( service.findAll().size() ).isEqualTo( 2 );
     }
     
     @Test
@@ -38,9 +39,8 @@ public class CompanyServiceTest {
     }
     
     @Test
-    public void findByIdIgnoreCaseConstaining() {
+    public void findByIdIgnoreCaseContaining() {
         Company company = service.findById( 1L );
-        String companyNameToUpperCase = company.getName().toUpperCase();
         
         assertThat( service.findByIdIgnoreCaseContaining( company.getName() ) ).isEqualTo( Arrays.asList( company ) );
         assertThat( service.findByIdIgnoreCaseContaining( company.getName().substring( 0, company.getName().length() / 2 ) ) ).isEqualTo( Arrays.asList( company ) );
