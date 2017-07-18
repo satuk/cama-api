@@ -1,12 +1,15 @@
-# Documentation
+# Cama API
+[![CircleCI](https://circleci.com/gh/satuk/cama-api.svg?style=shield)](https://circleci.com/gh/satuk/cama-api/tree/master)
+
+## Documentation
 ___
 tbd: description
 ___
 
-# Domain.model
+## Domain.model
 ![domain.model](https://github.com/satuk/cama-api/blob/master/new-domain-model.png)
 
-# API
+## API
 
 ```javascript       
 GET  /api/events
