@@ -29,3 +29,8 @@ Retrieves a list of all Companies.
 GET /api/companies/{id}
 ```
 Retrieves one specific Company with all the information.
+
+```javascript
+GET /api/companies/{id}/events
+```
+Retrieves all Events of one Company.
